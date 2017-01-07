@@ -1,0 +1,58 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Home</a>
+            </div>
+            <div class="navbar-header" ng-show="loggedin">
+                <a class="navbar-brand" href="" ng-click="LogoutMyUser()">Logout</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="" ng-click="goToMoreInfo()">MoreInfo<span class="glyphicon glyphicon-search"></span></a>
+            </div>
+            
+            <div class="navbar-header" ng-show="loggedin">
+                <a  class="navbar-brand" href="#" style="color: green">{{OnlineUser}}<span class="glyphicon glyphicon-cloud"></span></a>
+            </div>
+        </div>    
+        </nav>
+       
+        <br/><br/><br/><br/><br/>
+           <div class="row">
+            <div class="col-md-7">
+                 <h3 class="text-success" style="padding-left: 5%"></h3>
+              <div>
+                  <div ng-repeat="feed in Feeds" class="media well">
+
+                       <div class="media-body" >
+                           <h4 class="media-heading text-success">{{UsersNames[feed.index]}} <small>{{feed.date}}</small></h4>
+                          
+                           {{feed.text}}
+                           
+                       </div>
+                      <br/>
+                    
+                      <button type="button" ng-show="loggedin" class="btn btn-success glyphicon glyphicon-thumbs-up" ng-click="Voting(feed.id)">{{feed.votes}}</button>
+                   </div>
+              </div> 
+     
+                
+          </div> 
+        
+         
+              <div class="col-sm-5">
+                  <br/>
+                  <div class="well" ng-show="loggedin">
+                      <h4 style="color: #5cb85c">Share a new tweet with friends<span class="fa fa-twitter"></span></h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea maxlength="140" class="form-control" rows="3" ng-model="tweet"></textarea>
+                        </div>
+                        <button ng-click="Send(tweet)" class="btn btn-success">Send my tweet</button>
+                    </form>
+                </div>
+                <div class="well" ng-hide="loggedin">
+                      <h4 style="color: #5cb85c">Log in to share tweets with friends<span class="fa fa-twitter"></span></h4>
+                </div>
+                
+            </div>  
+       </div>
